@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHYAL — A Tribute</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #f7f4ee;
+    color: #2c2a25;
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* top ribbon */
+  .ribbon {
+    background: #2c2a25;
+    color: #f7f4ee;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 9px;
+    font-weight: 300;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 56px 24px 48px;
+    text-align: center;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #9a8f7a;
+    margin-bottom: 14px;
+    font-weight: 400;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 10vw, 72px);
+    font-weight: 700;
+    color: #2c2a25;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .h1-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(14px, 3vw, 18px);
+    font-style: italic;
+    font-weight: 400;
+    color: #9a8f7a;
+    margin-bottom: 36px;
+  }
+
+  /* photo frame */
+  .photo-wrap {
+    position: relative;
+    width: 200px;
+    height: 240px;
+    margin-bottom: 40px;
+  }
+
+  .photo-frame {
+    width: 100%;
+    height: 100%;
+    border: 1.5px solid #c9bfa8;
+    border-radius: 3px;
+    background: #ede8de;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    overflow: hidden;
+  }
+
+  .photo-emoji {
+    font-size: 56px;
+    line-height: 1;
+  }
+
+  .photo-hint {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #b0a48e;
+    font-weight: 300;
+    padding: 0 16px;
+    text-align: center;
+  }
+
+  /* little tag on photo */
+  .photo-tag {
+    position: absolute;
+    bottom: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2c2a25;
+    color: #f7f4ee;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    white-space: nowrap;
+    font-weight: 400;
+  }
+
+  /* divider */
+  .divider {
+    width: 48px;
+    height: 1px;
+    background: #c9bfa8;
+    margin: 36px auto 32px;
+  }
+
+  /* fun facts — the meat of the jokes */
+  .facts {
+    max-width: 440px;
+    width: 100%;
+    margin: 0 auto 40px;
+  }
+
+  .facts-title {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #9a8f7a;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .fact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid #e4ddd0;
+    text-align: left;
+  }
+
+  .fact-item:last-child { border-bottom: none; }
+
+  .fact-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .fact-text {
+    font-size: 13.5px;
+    font-weight: 400;
+    color: #3a3730;
+    line-height: 1.55;
+  }
+
+  .fact-text em {
+    font-style: italic;
+    color: #9a8f7a;
+    font-size: 12px;
+  }
+
+  /* quote */
+  .quote {
+    max-width: 380px;
+    margin: 0 auto 40px;
+    padding: 22px 28px;
+    background: #2c2a25;
+    border-radius: 3px;
+    text-align: left;
+  }
+
+  .quote p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #f7f4ee;
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+
+  .quote-by {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #7a7060;
+  }
+
+  /* awards */
+  .awards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    max-width: 420px;
+    margin: 0 auto 48px;
+  }
+
+  .award {
+    font-size: 11px;
+    font-weight: 400;
+    color: #5a5245;
+    border: 1px solid #c9bfa8;
+    padding: 5px 14px;
+    border-radius: 2px;
+    background: #fff;
+    letter-spacing: 0.04em;
+  }
+
+  footer {
+    background: #2c2a25;
+    color: #7a7060;
+    text-align: center;
+    padding: 24px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    line-height: 2;
+  }
+
+  footer span { color: #c9bfa8; }
+
+  /* the cockroach — very subtle this time, just walks by once */
+  .roach {
+    position: fixed;
+    bottom: 16px;
+    left: -40px;
+    font-size: 18px;
+    animation: roachWalk 18s linear 8s forwards;
+    z-index: 99;
+    pointer-events: none;
+    opacity: 0.55;
+  }
+
+  @keyframes roachWalk {
+    0%   { left: -40px; opacity: 0.55; }
+    48%  { left: 50%; opacity: 0.55; }
+    50%  { left: 50%; opacity: 0; }
+    100% { left: 50%; opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">A heartfelt tribute &nbsp;·&nbsp; Presented by his friends &nbsp;·&nbsp; With love (and full honesty)</div>
+
+<div class="hero">
+
+  <div class="eyebrow">In honour of</div>
+  <h1>Shyal</h1>
+  <div class="h1-sub">A man of extraordinary courage — his words</div>
+
+  <div class="photo-wrap">
+    <div class="photo-frame">
+      <div class="photo-emoji">🧑</div>
+      <div class="photo-hint">Place Shyal's photo here</div>
+    </div>
+    <div class="photo-tag">Very Brave. Allegedly.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FUN FACTS -->
+  <div class="facts">
+    <div class="facts-title">Things we know to be true</div>
+
+    <div class="fact-item">
+      <div class="fact-icon">🧠</div>
+      <div class="fact-text">
+        Shyal is, by his own assessment, extremely intelligent.
+        <br><em>Peer review is still pending.</em>
+      </div>
+    </div>
+
+    <div class="fact-item">
+      <div class="fact-icon">🦁</div>
+      <div class="fact-text">
+        Describes himself as fearless. Has faced many challenges — darkness, loud noises, and the occasional unexpected sound — with remarkable composure.
+        <br><em>Results may vary depending on what entered the room.</em>
+      </div>
+    </div>
+
+    <div class="fact-item">
+      <div class="fact-icon">🪳</div>
+      <div class="fact-text">
+        Once encountered a cockroach. Handled it with grace and dignity.
+        <br><em>Everyone in the building heard about it.</em>
+      </div>
+    </div>
+
+    <div class="fact-item">
+      <div class="fact-icon">💡</div>
+      <div class="fact-text">
+        Always has a plan. Is always right. Famously adaptable when proven otherwise.
+        <br><em>(Adaptable = quietly pretends it was the plan all along.)</em>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote">
+    <p>"I have never been scared of anything in my life. Not once. Not even a little bit."</p>
+    <div class="quote-by">— Shyal &nbsp;·&nbsp; <span style="color:#5a5245; font-style:italic">said with the lights on</span></div>
+  </div>
+
+  <!-- AWARDS -->
+  <div class="awards">
+    <div class="award">🏅 Self-Made Genius</div>
+    <div class="award">🌙 Champion of the Night Light</div>
+    <div class="award">🦁 Bravest (Self-Reported)</div>
+    <div class="award">📣 Loudest in the Room</div>
+    <div class="award">🪳 Cockroach Awareness Advocate</div>
+  </div>
+
+</div>
+
+<footer>
+  <div>Made with genuine admiration and love for <span>Shyal</span>.</div>
+  <div>We mean every word. Especially the italic ones.</div>
+</footer>
+
+<!-- very subtle cockroach cameo -->
+<div class="roach">🪳</div>
+
+</body>
+</html>
