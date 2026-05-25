@@ -1,0 +1,2 @@
+# Bastard
+Lyang lyang vo
